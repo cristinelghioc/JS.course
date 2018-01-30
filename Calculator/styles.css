@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100');
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar:200');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300');
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    background: #222;
+    margin: 50px 100px;
+}
+
+h1 {
+    font-family: 'Ubuntu';
+    color: #bada55;
+    /* color: #f0f0f0; */
+}
+
+.calculator {
+    width: 240px;
+    height: 420px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px 5px;
+}
+
+.calculator .display {
+    height: 120px;
+    padding-top: 4px;
+    background: #202020;
+}
+
+.calculator .display .queue {
+    font-family: 'Mukta Malar';
+    font-size: 40px;
+    line-height: 20px;
+    height: 74px;
+    width: 100%;
+    text-align: right;
+    color: #bada55;
+    padding: 4px;
+    overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 5px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background: #f88c2a;
+    border-radius: 5px;
+}
+
+.calculator .display .input {
+    font-family: 'Source Sans Pro';
+    width: 100%;
+    padding: 2px;
+    height: 40px;
+    font-size: 28px;
+    text-align: right;
+    color: #fafafa;
+    background: transparent;
+    border: 0px;
+}
+
+.calculator .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 300px;
+}
+
+.calculator .buttons .button {
+    background: #d2d3d5;
+    border-right: 1px solid #979799;
+    border-bottom: 1px solid #979799;
+    font-family: 'Roboto Mono';
+    font-size: 28px;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator .buttons .button.large {
+    grid-column: span 2;
+}
+
+.calculator .buttons .button.orange {
+    background: #f88c2a;
+    color: #fefefe;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            function createMessage(duration, firmName)
+            {
+                var message = 'Eu sunt angajat de ' + workingYears + ' ' + (workingYears > 1 ? 'ani' : 'an') + ' in ' + workplace + '!';
+
+                return message;
+            }
+
+            var firstName = 'Cristinel';
+            var lastName = 'Ghioc';
+
+            console.log(firstName);
+            console.log(lastName);
+            console.log(firstName + ' ' + lastName);
+
+            var actualCity = 'Brasov';
+
+            console.log('Numele meu este ' + firstName + ' ' + lastName + ' si sunt din ' + actualCity + '!');
+
+            var workplace = 'Projects Abroad';
+            var workingYears = 3;
+            var message = createMessage(workingYears, workplace)
+
+            console.log(message);
+
+            var gender = 'M';
+
+            console.log('Eu sunt ' + (gender == 'F' ? 'fata' : 'baiat') + '.');
+
+            var workingYears = workingYears + 1;
+            var message = createMessage(workingYears, workplace)
+
+            console.log(message);
+        </script>
+
+    </body>
+</html>
