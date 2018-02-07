@@ -42,50 +42,34 @@ const moveSquare = direction => {
 const moveUp = () => {
     let currentTop = parseInt($('.square').css('top'));
     if (currentTop > step) {
-        $('.down').css({
-            cursor: 'default'
-        });
         $('.square').css({
             top: currentTop - step + 'px'
-        });
-        $('.up').css({
-            cursor: 'pointer'
         });
     }
     else {
         $('.square').css({
             top: 0 + 'px'
         });
-        $('.up').css({
-            cursor: 'default'
-        });
     }
 }
+
 const moveDown = () => {
     let currentTop = parseInt($('.square').css('top'));
     let squareHeight = parseInt($('.square').css('height'));
     let displayHeight = (parseInt($('.display').css('height')) - 2);
-    let heightLimit = displayHeight - squareHeight;
-    let newTop = currentTop + step;
+    let heightLimit = displayHeight - step;
+    let currentBottom = currentTop + squareHeight;
 
-    if (currentTop < heightLimit) {
-        $('.up').css({
-            cursor: 'default'
-        });
-        if ((displayHeight - newTop) < (squareHeight)) {
+    if (currentBottom < heightLimit) {
+        if ((displayHeight - currentBottom - step) < step) {
+            let step = displayHeight - currentBottom;
             $('.square').css({
-                top: currentTop + (displayHeight - newTop - step) + 'px'
-            });
-            $('.down').css({
-                cursor: 'default'
+                top: currentTop + step + 'px'
             });
         }
         else {
             $('.square').css({
                 top: currentTop + step + 'px'
-            });
-            $('.down').css({
-                cursor: 'pointer'
             });
         }
     }
@@ -95,50 +79,34 @@ const moveDown = () => {
 const moveLeft = () => {
     let currentLeft = parseInt($('.square').css('left'));
     if (currentLeft > step) {
-        $('.right').css({
-            cursor: 'default'
-        });
         $('.square').css({
             left: currentLeft - step + 'px'
-        });
-        $('.left').css({
-            cursor: 'pointer'
         });
     }
     else {
         $('.square').css({
             left: 0 + 'px'
         });
-        $('.left').css({
-            cursor: 'default'
-        });
     }
 }
+
 const moveRight = () => {
     let currentLeft = parseInt($('.square').css('left'));
     let squareWidth = parseInt($('.square').css('width'));
     let displayWidth = (parseInt($('.display').css('width')) - 2);
-    let widthLimit = displayWidth - squareWidth;
-    let newLeft = currentLeft + step;
+    let widthLimit = displayWidth - step;
+    let currentBottom = currentLeft + squareWidth;
 
-    if (currentLeft < widthLimit) {
-        $('.left').css({
-            cursor: 'default'
-        });
-        if ((displayWidth - newLeft) < (squareWidth)) {
+    if (currentBottom < widthLimit) {
+        if ((displayWidth - currentBottom - step) < step) {
+            let step = displayWidth - currentBottom;
             $('.square').css({
-                left: currentLeft + (displayWidth - newLeft - step) + 'px'
-            });
-            $('.right').css({
-                cursor: 'default'
+                left: currentLeft + step + 'px'
             });
         }
         else {
             $('.square').css({
                 left: currentLeft + step + 'px'
-            });
-            $('.right').css({
-                cursor: 'pointer'
             });
         }
     }
