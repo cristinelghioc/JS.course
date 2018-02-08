@@ -51,29 +51,24 @@ const moveUp = () => {
             top: 0 + 'px'
         });
     }
+    console.log('up: ' + currentTop);
 }
 
 const moveDown = () => {
     let currentTop = parseInt($('.square').css('top'));
     let squareHeight = parseInt($('.square').css('height'));
     let displayHeight = (parseInt($('.display').css('height')) - 2);
-    let heightLimit = displayHeight - step;
-    let currentBottom = currentTop + squareHeight;
-
-    if (currentBottom < heightLimit) {
-        if ((displayHeight - currentBottom - step) < step) {
-            let step = displayHeight - currentBottom;
-            $('.square').css({
-                top: currentTop + step + 'px'
-            });
-        }
-        else {
-            $('.square').css({
-                top: currentTop + step + 'px'
-            });
-        }
+    if ((displayHeight - currentTop - squareHeight) > step) {
+        $('.square').css({
+            top: currentTop + step + 'px'
+        });
     }
-
+    else {
+        let step = displayHeight - currentTop - squareHeight;
+        $('.square').css({
+            top: currentTop + step + 'px'
+        });
+    }
 }
 
 const moveLeft = () => {
@@ -92,23 +87,17 @@ const moveLeft = () => {
 
 const moveRight = () => {
     let currentLeft = parseInt($('.square').css('left'));
-    let squareWidth = parseInt($('.square').css('width'));
-    let displayWidth = (parseInt($('.display').css('width')) - 2);
-    let widthLimit = displayWidth - step;
-    let currentBottom = currentLeft + squareWidth;
-
-    if (currentBottom < widthLimit) {
-        if ((displayWidth - currentBottom - step) < step) {
-            let step = displayWidth - currentBottom;
-            $('.square').css({
-                left: currentLeft + step + 'px'
-            });
-        }
-        else {
-            $('.square').css({
-                left: currentLeft + step + 'px'
-            });
-        }
+    let squarewidth = parseInt($('.square').css('width'));
+    let displaywidth = (parseInt($('.display').css('width')) - 2);
+    if ((displaywidth - currentLeft - squarewidth) > step) {
+        $('.square').css({
+            left: currentLeft + step + 'px'
+        });
     }
-
+    else {
+        let step = displaywidth - currentLeft - squarewidth;
+        $('.square').css({
+            left: currentLeft + step + 'px'
+        });
+    }
 }
