@@ -40,6 +40,7 @@ const moveSquare = direction => {
 };
 
 const moveUp = () => {
+    $('div.down').removeClass(' unavailable');
     let currentTop = parseInt($('.square').css('top'));
     if (currentTop > step) {
         $('.square').css({
@@ -50,11 +51,12 @@ const moveUp = () => {
         $('.square').css({
             top: 0 + 'px'
         });
+        $('div.up').addClass(' unavailable');
     }
-    console.log('up: ' + currentTop);
 }
 
 const moveDown = () => {
+    $('div.up').removeClass(' unavailable');
     let currentTop = parseInt($('.square').css('top'));
     let squareHeight = parseInt($('.square').css('height'));
     let displayHeight = (parseInt($('.display').css('height')) - 2);
@@ -68,10 +70,12 @@ const moveDown = () => {
         $('.square').css({
             top: currentTop + step + 'px'
         });
+        $('div.down').addClass(' unavailable');
     }
 }
 
 const moveLeft = () => {
+    $('div.right').removeClass(' unavailable');
     let currentLeft = parseInt($('.square').css('left'));
     if (currentLeft > step) {
         $('.square').css({
@@ -82,10 +86,12 @@ const moveLeft = () => {
         $('.square').css({
             left: 0 + 'px'
         });
+        $('div.left').addClass(' unavailable');
     }
 }
 
 const moveRight = () => {
+    $('div.left').removeClass(' unavailable');
     let currentLeft = parseInt($('.square').css('left'));
     let squarewidth = parseInt($('.square').css('width'));
     let displaywidth = (parseInt($('.display').css('width')) - 2);
@@ -99,5 +105,6 @@ const moveRight = () => {
         $('.square').css({
             left: currentLeft + step + 'px'
         });
+        $('div.right').addClass(' unavailable');
     }
 }

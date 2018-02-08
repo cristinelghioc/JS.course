@@ -19,8 +19,8 @@
 }
 
 .square {
-    height: 110px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     background: #bada55;
     position: absolute;
     top: 100px;
@@ -56,7 +56,7 @@
     font-size: 34px;
     background: #dadada;
     border-radius: 5px;
-    box-shadow: 4px 4px  4px #00000044;
+    box-shadow: 4px 4px 4px #00000044;
     cursor: pointer;
 }
 
@@ -65,4 +65,27 @@
 .right:hover,
 .down:hover {
     background: #bada55;
+}
+
+.up.unavailable,
+.left.unavailable,
+.right.unavailable,
+.down.unavailable {
+    box-shadow: none;
+    background: #fff;
+}
+
+.up.unavailable:hover,
+.left.unavailable:hover,
+.right.unavailable:hover,
+.down.unavailable:hover {
+    background: #fff;
+    cursor: default;
+}
+
+.up.unavailable i,
+.left.unavailable i,
+.right.unavailable i,
+.down.unavailable i {
+    color: #fff;
 }
