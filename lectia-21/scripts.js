@@ -35,18 +35,23 @@ function toggleDescription() {
 
 function toggleAllDescription() {
 
-    if ($('.description').hasClass('all-opened')) {
-        $('.all-opened').toggle(1000);
-        $('.all-opened').removeClass('all-opened');
-        $(this).text('Open all');
+    if ($('.all').text() == 'Collapse all') {
+        $('.opened').each(function () {
+            $(this).toggle(1000);
+            $(this).removeClass('opened');
+            toggleElement($(this).prev('.title').find('.fas'));
+            $('.all').text('Expand all');
+        });
         return;
     }
 
-    $('.opened').toggle(1000);
-    $('.opened').removeClass('opened');
-    $('.description').addClass('all-opened');
-    $('.description').toggle(1000);
-    $(this).text('Close all');
+    $('.description').not('.opened').each(function () {
+        $(this).addClass('opened');
+        $(this).toggle(1000);
+        toggleElement($(this).prev('.title').find('.fas'));
+        $('.all').text('Collapse all');
+    });
+
     return;
 }
 
