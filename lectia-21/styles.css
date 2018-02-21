@@ -16,6 +16,11 @@ h1 {
     text-shadow: 2px 2px 2px #fff;
     font-family: 'Lobster';
     font-size: 3vw;
+    background: url(accordion.png) no-repeat left top;
+    background-size: 6vw;
+    padding-top: 1vw;
+    padding-left: 7vw;
+    height: 100%;
 }
 
 main {
@@ -25,11 +30,11 @@ main {
     font-family: 'Kavivanar';
     display: grid;
     grid-gap: 30px;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select:none;
     user-select:none;
+    -moz-user-select: none;
+    -ms-user-select:none;
     -o-user-select:none;
+    -webkit-user-select: none;
 }
 
 section {
@@ -59,10 +64,10 @@ section.all {
 }
 
 .title .fas {
-    color: #fff;
+    color: #db9f9f;
     font-size: 3vw;
     text-shadow: 2px 2px 2px #00000044;
-    display: none;
+    /* display: none; */
 }
 
 .title:hover {
