@@ -36,6 +36,12 @@ function toggleDescription() {
 function toggleAllDescription() {
 
     if ($('.all').text() == 'Collapse all') {
+
+        if ($('.opened').length == 0) {
+            $('.all').text('Expand all');
+            return;
+        }
+
         $('.opened').each(function () {
             $(this).toggle(1000);
             $(this).removeClass('opened');
@@ -52,7 +58,6 @@ function toggleAllDescription() {
         $('.all').text('Collapse all');
     });
 
-    return;
 }
 
 const toggleElement = element => {
