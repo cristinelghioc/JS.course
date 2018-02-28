@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar:300');
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+h1 {
+    color: royalblue;
+    text-align: center;
+    text-shadow: 2px 2px 2px #00000088;
+    font-size: 50px;
+}
+
+main {
+    background: mintcream;
+    border: 1px skyblue solid;
+    width: 800px;
+    height: 500px;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 6fr 2fr;
+}
+
+.buttons {
+    background: powderblue;
+    display: grid;
+    grid-template-rows: repeat(3), 1fr;
+    user-select:none;
+    -moz-user-select: none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    -webkit-user-select: none;
+}
+
+.button {
+    border: 1px skyblue solid;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 38px;
+    font-size: 25px;
+    font-family: 'Mukta Malar';
+    cursor: pointer;
+}
+
+i.far {
+    font-size: 50px;
+    padding-left: 50px;
+    padding-top: 100px;
+}
