@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar:300');
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    text-shadow: 2px 2px 2px #00000088;
+    font-size: 50px;
+}
+
+main {
+    background: mintcream;
+    border: 1px blue solid;
+    width: 800px;
+    height: 500px;
+    margin: 50px auto;
+}
+
+section.values {
+    background: aqua;
+    border: 1px white solid;
+    height: 50px;
+    text-align: center;
+}
+
+input.value {
+    width: 40px;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+input.apply {
+    font-size: 25px;
+    text-align: center;
+}
+
+section.display {
+    height: 448px;
+    background: cadetblue;
+    position: relative;
+}
+
+span {
+    position: absolute;
+    text-shadow: 1px 0 white;
+}
