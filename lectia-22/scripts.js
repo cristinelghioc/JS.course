@@ -1,12 +1,12 @@
 $(() => {
+    // pregatim "board"-ul si asezam cartile pe el
     init();
 });
 
-const boardWidth = 4;
-const boardHeight = 3;
+const cols = 4;
+const rows = 3;
 const images = [
     'fab fa-android',
-    'fab fab fa-app-store-ios',
     'fas fa-at',
     'fab fa-apple',
     'fas fa-ambulance',
@@ -50,37 +50,128 @@ const images = [
     'fas fa-subway',
     'far fa-thumbs-up'
 ];
+let player = 'one';
 
 const init = () => {
+    // adaugam board-ul in board-container
     $('.board-container').html('<section class="board"></section>');
-    setBoardDimensions(boardWidth, boardHeight);
 
-    for (let i = 0; i < boardWidth * boardHeight; i++) {
-        $('.board').append('<div class="cards"></div>');
-    }
+    // setam grid-template-columns si variabila css --cols-number
+    setBoardDimensions(cols, rows);
+
+    // asezam cartile
+    buildCardsGrid();
+
+    // adaugam evenimentele
+    setClickEvents();
+
+    // selectam jucatorul
+    $(`.player.${player}`).addClass('active');
 };
 
-const setBoardDimensions = (boardWidth, boardHeight) => {
+const buildCardsGrid = () => {
+    const numberOfCards = cols * rows;
+    let tmpCards = shuffleArray(images, numberOfCards / 2);
+    let allCards = [...tmpCards, ...tmpCards];
+    allCards = shuffleArray(allCards, numberOfCards);
+
+    allCards.map(icon => {
+        $('.board').append(`<div class="cards"><i class="${icon}"></i></div>`);
+    });
+
+};
+
+const setBoardDimensions = (cols, rows) => {
+    // setam variabile css --cols-number pe body pentru a putea fi accesata din orice clasa css
+    document.body.style.setProperty('--cols-number', cols);
+
     $('.board').css({
-        gridTemplateColumns: `repeat(${boardWidth}, 1fr)`,
-        gridTemplateRows: `repeat(${boardHeight}, 1fr)`
-    })
-}
+        gridTemplateColumns: `repeat(${cols}, 1fr)`,
+        gridTemplateRows: `repeat(${rows}, 1fr)`
+    });
+};
 
 const random = max => {
     return Math.floor(Math.random() * max);
-}
+};
 
 const shuffleArray = (cards, length) => {
+    /*
+        clonam array-ul cards primit ca parametru pentru a nu modifica array-ul images pe care il trimitem
+        in functia shuffleArray
+    */
     let imgs = cards.slice(0);
     let noOfCards = imgs.length;
-    let newImages = [];
-    let idx;
+    let newImages = []; // noul array in care vom pune cate o imagine aleasa aleator
+    let idx; // index-ul pe care il vom genera aleator
+
     for (let i = 0; i < length; i++) {
+        // generam un nr aleator intre 0 si noOfCards
         idx = random(noOfCards);
+
+        // adaugam la noul array elementul cu index-ul idx
         newImages.push(imgs[idx]);
+
+        // stergem din array-ul imgs elementul cu index-ul idx
         imgs.splice(idx, 1);
+
+        // decrementam cu o unitate valoare variabilei noOfCards in care
+        // am pus initial nr de elemente ale array-ului imgs
         noOfCards--;
     }
     return newImages;
-}
+};
+
+const setClickEvents = () => {
+    $('.cards').click(function () {
+        if ($('.cards.on').length == 2) {
+            return;
+        }
+
+        $(this).addClass('on');
+
+        if ($('.cards.on').length == 2) {
+            chechPairs();
+        }
+    });
+};
+
+const chechPairs = () => {
+    // const openedCards = $('.cards.on');
+    // openedCards[0].html() == openedCards[1].html();
+
+    [firstCard, secondCard] = $('.cards.on');
+
+    if ($(firstCard).html() == $(secondCard).html()) {
+        removePair();
+        return;
+    }
+
+    closePair();
+};
+
+const removePair = () => {
+    setTimeout(() => {
+        $('.on').addClass('removed').removeClass('on');
+        setScore();
+    }, 500);
+};
+
+const setScore = () => {
+    const scoreElement = $('.player.active .score');
+    let score = scoreElement.text();
+    scoreElement.text(parseInt(score) + 1);
+};
+
+const closePair = () => {
+    setTimeout(() => {
+        $('.on').removeClass('on');
+        selectPlayer();
+    }, 1000);
+};
+
+const selectPlayer = () => {
+    $(`.player.${player}`).removeClass('active');
+    player = player === 'one' ? 'two' : 'one';
+    $(`.player.${player}`).addClass('active');
+};

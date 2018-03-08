@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster');
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
-@import url('https://fonts.googleapis.com/css?family=Kavivanar');
-
+@import url('https://fonts.googleapis.com/css?family=BioRhyme+Expanded');
+@import url('https://fonts.googleapis.com/css?family=Seymour+One');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 * {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -103,10 +102,9 @@ h2 {
 }
 
 .board .cards.on i {
+    font-size: calc(30vw / var(--cols-number));
     color: #ffffff88;
-    font-size: calc(35vw / var(--width));
     text-shadow: 4px 4px 4px #00000044;
-    transform: translateX(0);
     display: block;
 }
 
