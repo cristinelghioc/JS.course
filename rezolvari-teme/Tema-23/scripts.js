@@ -28,6 +28,10 @@ function randomSize(i) {
 function randomize() {
     $('.display').children('span').remove();
     const value = $(this).prev().val();
+    if (value < 1) {
+        alert('Alege o valoare intre 1 si 99');
+        return;
+    }
     for (let i = 1; i <= value; i++) {
         $('.display').append(`<span class="index${i}">${i}</span>`);
         randomPosition(i);
@@ -39,9 +43,9 @@ function randomize() {
 function validate(evt) {
     var theEvent = evt || window.event;
     var key = theEvent.keyCode || theEvent.which;
-    key = String.fromCharCode( key );
-    var regex = /[0-9]|\./;
-    if( !regex.test(key) ) {
+    key = String.fromCharCode(key);
+    var regex = /[0-9]/;
+    if(!regex.test(key)) {
       theEvent.returnValue = false;
       if(theEvent.preventDefault) theEvent.preventDefault();
     }
