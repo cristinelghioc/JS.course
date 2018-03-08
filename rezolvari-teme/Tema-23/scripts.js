@@ -26,6 +26,7 @@ function randomSize(i) {
 }
 
 function randomize() {
+    $('.display').children('span').remove();
     const value = $(this).prev().val();
     for (let i = 1; i <= value; i++) {
         $('.display').append(`<span class="index${i}">${i}</span>`);
